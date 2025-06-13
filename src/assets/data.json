@@ -1,0 +1,122 @@
+{
+  "summary": {
+    "assets": 2597,
+    "licenses": 50,
+    "accessories": 5,
+    "consumables": 3,
+    "components": 6,
+    "people": 59
+  },
+  "status": {
+    "Ready to Deploy": 2000,
+    "Pending": 1150,
+    "Archived": 500,
+    "Broken - Not Fixable": 100
+  },
+  "activity": [
+    {
+      "date": "Mon Jun 09, 2025 1:26AM",
+      "createdBy": "Admin User",
+      "action": "checkout",
+      "item": "Bluetooth Keyboard",
+      "target": "Chance Auer"
+    },
+    {
+      "date": "Mon Jun 09, 2025 1:24AM",
+      "createdBy": "Admin User",
+      "action": "update",
+      "item": "123"
+    },
+    {
+      "date": "Mon Jun 09, 2025 1:23AM",
+      "createdBy": "Admin User",
+      "action": "create new",
+      "item": "123"
+    },
+    {
+      "date": "Mon Jun 09, 2025 1:20AM",
+      "createdBy": "Admin User",
+      "action": "uploaded",
+      "item": "Acrobat"
+    },
+    {
+      "date": "Mon Jun 09, 2025 1:19AM",
+      "createdBy": "Admin User",
+      "action": "update",
+      "item": "Lenovo 480GB SATA SSD"
+    },
+    {
+      "date": "Mon Jun 09, 2025 1:18AM",
+      "createdBy": "Admin User",
+      "action": "checkout",
+      "item": "Crucial BX300 240GB SATA Internal SSD",
+      "target": "Macbook Pro 13\""
+    },
+    {
+      "date": "Mon Jun 09, 2025 1:10AM",
+      "createdBy": "Admin User",
+      "action": "update",
+      "item": "Asus Zenbook Duo UX428EG Internal SSD"
+    },
+    {
+      "date": "Mon Jun 09, 2025 1:00AM",
+      "createdBy": "Admin User",
+      "action": "checkout",
+      "item": "Screen Protector",
+      "target": "Macbook Air 16\""
+    }
+  ],
+  "location": [
+    {
+      "name": "Jakarta",
+      "item": 200,
+      "assigned": 15,
+      "user": 15
+    },
+    {
+      "name": "Surabaya",
+      "item": 100,
+      "assigned": 0,
+      "user": 0
+    },
+    {
+      "name": "Medan",
+      "item": 150,
+      "assigned": 0,
+      "user": 0
+    },
+    {
+      "name": "Jayapura",
+      "item": 300,
+      "assigned": 0,
+      "user": 0
+    }
+  ],
+  "category": [
+    {
+      "name": "Laptop",
+      "type": "Asset",
+      "unit": "200"
+    },
+    {
+      "name": "Keyboard",
+      "type": "Accesories",
+      "unit": "100"
+    },
+    {
+      "name": "Printer Ink",
+      "type": "Consumables",
+      "unit": "500"
+    },
+    {
+      "name": "HDD / SSD",
+      "type": "Component",
+      "unit": "50"
+    },
+    {
+      "name": "Microsoft 360 Lisence",
+      "type": "Lisence",
+      "unit": "10"
+    }
+  ]
+}
