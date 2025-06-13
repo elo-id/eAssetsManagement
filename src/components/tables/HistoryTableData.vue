@@ -45,7 +45,7 @@ export default {
 }
 
 .table-title {
-  color: #1c4471;
+  color: #fff;
   margin: 0;
 }
 
@@ -65,7 +65,7 @@ export default {
 .document-table thead {
   position: sticky;
   top: 0;
-  background: #f7f7f7;
+  background: #0064a0;
   z-index: 10;
 }
 
@@ -78,7 +78,7 @@ export default {
 }
 
 .document-table thead th {
-  color: #1c4471;
+  color: #fff;
   font-weight: bold;
 }
 

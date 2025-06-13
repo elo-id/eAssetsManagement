@@ -1,32 +1,45 @@
 <template>
   <div class="dashboard">
     <div class="summary-grid">
-      <div class="card" v-for="(value, key) in data.summary" :key="key">
-        <h2>{{ value }}</h2>
-        <p>{{ key }}</p>
-      </div>
+      <SummaryCard
+        v-for="(value, key) in data.summary"
+        :key="key"
+        :title="key"
+        :value="value"
+      />
     </div>
 
     <div class="first-row-container">
       <div class="recent-activity">
-        <div class="table-header" @click="toggleHistoryTable">
+        <div
+          class="table-header"
+          :class="{ 'rounded-b-none': showHistoryTable }"
+          @click="toggleHistoryTable"
+        >
           <h3>Recent Activity</h3>
           <span class="toggle-icon">{{ showHistoryTable ? "−" : "+" }}</span>
         </div>
-  
+
         <transition name="collapse">
           <div v-show="showHistoryTable" class="table-content">
             <HistoryTableData :activity="data.activity" />
+            <div class="view-all-btn">
+              <a href="#" class="view-link">view all →</a>
+            </div>
           </div>
         </transition>
       </div>
-  
+
       <div class="status-chart">
-        <div class="status-header" @click="toggleStatus">
+        <div
+          class="status-header"
+          :class="{ 'rounded-b-none': showStatus }"
+          @click="toggleStatus"
+        >
           <h3>Assets by Status</h3>
           <span class="toggle-icon">{{ showStatus ? "−" : "+" }}</span>
         </div>
-  
+
         <transition name="collapse">
           <div v-show="showStatus" class="status-content">
             <ChartContainer :data="data" />
@@ -37,27 +50,41 @@
 
     <div class="second-row-container">
       <div class="assets-location">
-        <div class="table-header" @click="toggleLocationTable">
+        <div
+          class="table-header"
+          :class="{ 'rounded-b-none': showLocationTable }"
+          @click="toggleLocationTable"
+        >
           <h3>Assets Location</h3>
           <span class="toggle-icon">{{ showLocationtable ? "−" : "+" }}</span>
         </div>
-  
+
         <transition name="collapse">
           <div v-show="showLocationTable" class="table-content">
             <LocationTableData :location="data.location" />
+            <div class="view-all-btn">
+              <a href="#" class="view-link">view all →</a>
+            </div>
           </div>
         </transition>
       </div>
-  
+
       <div class="assets-category">
-        <div class="table-header" @click="toggleCategoryTable">
+        <div
+          class="table-header"
+          :class="{ 'rounded-b-none': showCategoryTable }"
+          @click="toggleCategoryTable"
+        >
           <h3>Assets Category</h3>
           <span class="toggle-icon">{{ showCategoryTable ? "−" : "+" }}</span>
         </div>
-  
+
         <transition name="collapse">
           <div v-show="showCategoryTable" class="table-content">
             <CategoryTableData :category="data.category" />
+            <div class="view-all-btn">
+              <a href="#" class="view-link">view all →</a>
+            </div>
           </div>
         </transition>
       </div>
@@ -67,13 +94,20 @@
 
 <script>
 import data from "../assets/data.json";
+import SummaryCard from "@/components/SummaryCard.vue";
 import HistoryTableData from "@/components/tables/HistoryTableData.vue";
 import ChartContainer from "@/components/ChartContainer.vue";
 import LocationTableData from "@/components/tables/LocationTableData.vue";
 import CategoryTableData from "@/components/tables/CategoryTableData.vue";
 
 export default {
-  components: { HistoryTableData, ChartContainer, LocationTableData, CategoryTableData },
+  components: {
+    SummaryCard,
+    HistoryTableData,
+    ChartContainer,
+    LocationTableData,
+    CategoryTableData,
+  },
   data() {
     return {
       data,
@@ -85,16 +119,16 @@ export default {
   },
   methods: {
     toggleHistoryTable() {
-      this.showHistoryTable = !this.showHistoryTable
+      this.showHistoryTable = !this.showHistoryTable;
     },
     toggleStatus() {
       this.showStatus = !this.showStatus;
     },
     toggleLocationTable() {
-      this.showLocationTable = !this.showLocationTable
+      this.showLocationTable = !this.showLocationTable;
     },
     toggleCategoryTable() {
-      this.showCategoryTable = !this.showCategoryTable
+      this.showCategoryTable = !this.showCategoryTable;
     },
   },
 };
@@ -111,14 +145,6 @@ export default {
   margin-bottom: 16px;
 }
 
-.card {
-  flex: 1;
-  background: #f3f3f3;
-  padding: 16px;
-  border-radius: 8px;
-  text-align: center;
-}
-
 .activity-section table {
   width: 100%;
   border-collapse: collapse;
@@ -131,9 +157,9 @@ export default {
 }
 
 .first-row-container {
- display: flex;
- justify-content: space-between;
- gap: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .recent-activity {
@@ -148,15 +174,22 @@ export default {
   flex: 1;
 }
 
-.table-header, .status-header {
+.table-header,
+.status-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f8f9fc;
+  background: #bcc3c6;
+  color: #000;
   padding: 12px 16px;
-  border-radius: 6px 6px 0 0;
+  border-radius: 6px;
   cursor: pointer;
   border: 1px solid #d1d5db;
+}
+
+.rounded-b-none {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .toggle-icon {
@@ -166,19 +199,21 @@ export default {
 }
 
 .second-row-container {
- display: flex;
- justify-content: space-between;
- gap: 16px;
- margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
 }
 
-.assets-location, .assets-category {
+.assets-location,
+.assets-category {
   list-style-type: none;
   padding: 0;
   flex: 1;
 }
 
-.table-content, .status-content {
+.table-content,
+.status-content {
   padding: 12px 16px;
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -201,5 +236,26 @@ export default {
 .collapse-leave-from {
   max-height: 500px; /* Adjust based on expected content size */
   opacity: 1;
+}
+
+.view-all-btn {
+  margin-top: 12px;
+}
+
+.view-link {
+  display: block;
+  width: 100%;
+  color: #ffffff;
+  background-color: #0064a0;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+
+.view-link:hover {
+  background-color: #00bcd4;
 }
 </style>
