@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@elo/elo-cli": "^21.1.2",
+    "@elo/session": "^21.1.2",
     "chart.js": "^2.9.4",
     "chartjs-plugin-datalabels": "^0.7.0",
     "vue": "^2.6.14",
