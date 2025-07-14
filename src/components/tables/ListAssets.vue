@@ -4,20 +4,26 @@
       <table class="document-table">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Created By</th>
-            <th>Action</th>
-            <th>Item</th>
-            <th>Target</th>
+            <th>Asset Tag</th>
+            <th>Asset Name</th>
+            <th>Model Name</th>
+            <th>Location Name</th>
+            <th>Warranty</th>
+            <th>Purchase Date</th>
+            <th>Supplier Name</th>
+            <th>Purchase Cost</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(log, i) in activity" :key="i">
-            <td>{{ log.date }}</td>
-            <td>{{ log.createdBy }}</td>
-            <td>{{ log.action }}</td>
-            <td>{{ log.item }}</td>
-            <td>{{ log.target || '-' }}</td>
+          <tr v-for="(log, i) in assets" :key="i">
+            <td>{{ log.assetTag }}</td>
+            <td>{{ log.assetName }}</td>
+            <td>{{ log.modelName }}</td>
+            <td>{{ log.locationName }}</td>
+            <td>{{ log.warranty }}</td>
+            <td>{{ log.purchaseDate }}</td>
+            <td>{{ log.supplierName }}</td>
+            <td>{{ log.purchaseCost }}</td>
           </tr>
         </tbody>
       </table>
@@ -28,7 +34,7 @@
 <script>
 export default {
   props: {
-    activity: {
+    assets: {
       type: Array,
       required: true,
     },
@@ -50,16 +56,19 @@ export default {
 }
 
 .table-wrapper {
-  max-width: 100%;
-  max-height: 320px;
-  overflow: auto;
+  width: 100%;
+  max-width: 66.6666vw; /* Ensures 2/3 of screen width */
+  overflow-x: auto;
   border-radius: 8px;
   border: 1px solid #ddd;
+  margin: 0 auto; /* Center align if needed */
 }
 
 .document-table {
-  width: 100%;
+  width: 100%; /* Let it adapt to wrapper */
+  min-width: 1000px; /* Keep minimum readable structure */
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .document-table thead {
@@ -75,6 +84,8 @@ export default {
   text-align: left;
   border: 1px solid #e5e5e5;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .document-table thead th {

@@ -2,9 +2,9 @@
   <div class="card">
     <p class="value">{{ value }}</p>
     <p class="title">{{ title }}</p>
-    <div class="view-all-btn">
+    <!-- <div class="view-all-btn">
       <a href="#" class="view-link">view all →</a>
-    </div>
+    </div> -->
   </div>
 </template>
 

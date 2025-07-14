@@ -5,9 +5,10 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>Item</th>
-            <th>Assigned</th>
-            <th>User</th>
+            <th>Manager</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Country</th>
           </tr>
         </thead>
         <tbody>
@@ -16,6 +17,7 @@
             <td>{{ log.item }}</td>
             <td>{{ log.assigned }}</td>
             <td>{{ log.user }}</td>
+            <td>{{ log.country }}</td>
           </tr>
         </tbody>
       </table>
@@ -35,29 +37,20 @@ export default {
 </script>
 
 <style scoped>
-.table-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-
-.table-title {
-  color: #fff;
-  margin: 0;
-}
-
 .table-wrapper {
-  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;       /* Enables horizontal scroll on mobile */
+  overflow-y: auto;
   max-height: 320px;
-  overflow: auto;
   border-radius: 8px;
   border: 1px solid #ddd;
 }
 
 .document-table {
-  width: 100%;
+  width: 600px; /* Minimum table width for scroll */
+  min-width: 100%;
   border-collapse: collapse;
+  table-layout: auto;
 }
 
 .document-table thead {
@@ -72,7 +65,7 @@ export default {
   padding: 10px;
   text-align: left;
   border: 1px solid #e5e5e5;
-  white-space: nowrap;
+  white-space: nowrap;      /* Prevents wrapping */
 }
 
 .document-table thead th {
@@ -80,10 +73,10 @@ export default {
   font-weight: bold;
 }
 
+/* Small screen responsiveness */
 @media (max-width: 450px) {
-  .table-actions {
-    flex-direction: column;
-    align-items: center;
+  .document-table {
+    width: max-content;     /* Keeps table structure readable */
   }
 }
 </style>

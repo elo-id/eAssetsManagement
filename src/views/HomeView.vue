@@ -16,15 +16,27 @@
           :class="{ 'rounded-b-none': showHistoryTable }"
           @click="toggleHistoryTable"
         >
-          <h3>Recent Activity</h3>
+          <h3>List Assets</h3>
           <span class="toggle-icon">{{ showHistoryTable ? "−" : "+" }}</span>
         </div>
 
         <transition name="collapse">
-          <div v-show="showHistoryTable" class="table-content">
-            <HistoryTableData :activity="data.activity" />
+          <div
+            v-show="showHistoryTable"
+            class="table-content"
+            :class="{ scrollable: showAllAssets }"
+          >
+            <div class="table-scroll-area">
+              <AssetsTableData :assets="visibleAssets" />
+            </div>
             <div class="view-all-btn">
-              <a href="#" class="view-link">view all →</a>
+              <a
+                href="#"
+                class="view-link"
+                @click.prevent="showAllAssets = !showAllAssets"
+              >
+                {{ showAllAssets ? "show less ↑" : "view all →" }}
+              </a>
             </div>
           </div>
         </transition>
@@ -60,10 +72,22 @@
         </div>
 
         <transition name="collapse">
-          <div v-show="showLocationTable" class="table-content">
-            <LocationTableData :location="data.location" />
+          <div
+            v-show="showLocationTable"
+            class="table-content"
+            :class="{ scrollable: showAllLocation }"
+          >
+            <div class="table-scroll-area">
+              <LocationTableData :location="visibleLocation" />
+            </div>
             <div class="view-all-btn">
-              <a href="#" class="view-link">view all →</a>
+              <a
+                href="#"
+                class="view-link"
+                @click.prevent="showAllLocation = !showAllLocation"
+              >
+                {{ showAllLocation ? "show less ↑" : "view all →" }}
+              </a>
             </div>
           </div>
         </transition>
@@ -80,10 +104,22 @@
         </div>
 
         <transition name="collapse">
-          <div v-show="showCategoryTable" class="table-content">
-            <CategoryTableData :category="data.category" />
+          <div
+            v-show="showCategoryTable"
+            class="table-content"
+            :class="{ scrollable: showAllCategory }"
+          >
+            <div class="table-scroll-area">
+              <CategoryTableData :category="visibleCategory" />
+            </div>
             <div class="view-all-btn">
-              <a href="#" class="view-link">view all →</a>
+              <a
+                href="#"
+                class="view-link"
+                @click.prevent="showAllCategory = !showAllCategory"
+              >
+                {{ showAllCategory ? "show less ↑" : "view all →" }}
+              </a>
             </div>
           </div>
         </transition>
@@ -95,7 +131,7 @@
 <script>
 import data from "../assets/data.json";
 import SummaryCard from "@/components/SummaryCard.vue";
-import HistoryTableData from "@/components/tables/HistoryTableData.vue";
+import AssetsTableData from "@/components/tables/ListAssets.vue";
 import ChartContainer from "@/components/ChartContainer.vue";
 import LocationTableData from "@/components/tables/LocationTableData.vue";
 import CategoryTableData from "@/components/tables/CategoryTableData.vue";
@@ -103,7 +139,7 @@ import CategoryTableData from "@/components/tables/CategoryTableData.vue";
 export default {
   components: {
     SummaryCard,
-    HistoryTableData,
+    AssetsTableData,
     ChartContainer,
     LocationTableData,
     CategoryTableData,
@@ -115,6 +151,9 @@ export default {
       showStatus: true,
       showLocationTable: true,
       showCategoryTable: true,
+      showAllAssets: false,
+      showAllLocation: false,
+      showAllCategory: false,
     };
   },
   methods: {
@@ -131,6 +170,23 @@ export default {
       this.showCategoryTable = !this.showCategoryTable;
     },
   },
+  computed: {
+    visibleAssets() {
+      return this.showAllAssets
+        ? this.data.assets
+        : this.data.assets.slice(0, 6);
+    },
+    visibleLocation() {
+      return this.showAllLocation
+        ? this.data.location
+        : this.data.location.slice(0, 4);
+    },
+    visibleCategory() {
+      return this.showAllCategory
+        ? this.data.category
+        : this.data.category.slice(0, 4);
+    },
+  },
 };
 </script>
 
@@ -141,39 +197,47 @@ export default {
 
 .summary-grid {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 16px;
 }
 
-.activity-section table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.activity-section th,
-.activity-section td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.first-row-container {
+.first-row-container,
+.second-row-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 16px;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
+/* Allow items to stack vertically on smaller screens */
+@media (max-width: 768px) {
+  .first-row-container > *,
+  .second-row-container > * {
+    flex: 1 1 100%;
+  }
+
+  .summary-grid > * {
+    flex: 1 1 100%;
+  }
+}
+
+/* Default desktop layout */
 .recent-activity {
-  list-style-type: none;
-  padding: 0;
   flex: 2;
 }
 
 .status-chart {
-  list-style-type: none;
-  padding: 0;
   flex: 1;
 }
 
+.assets-location,
+.assets-category {
+  flex: 1;
+}
+
+/* Headers */
 .table-header,
 .status-header {
   display: flex;
@@ -198,28 +262,33 @@ export default {
   color: #6b7280;
 }
 
-.second-row-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.assets-location,
-.assets-category {
-  list-style-type: none;
-  padding: 0;
-  flex: 1;
-}
-
+/* Content styling */
 .table-content,
 .status-content {
   padding: 12px 16px;
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 0 0 6px 6px;
+  overflow-x: auto;
 }
 
+.table-content.scrollable {
+  max-height: 300px; /* Adjust based on desired visible height */
+  overflow-y: auto;
+}
+
+.table-scroll-area {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Make tables scroll horizontally */
+.table-content table,
+.status-content table {
+  min-width: 600px;
+}
+
+/* Collapse transitions */
 .collapse-enter-active,
 .collapse-leave-active {
   transition: max-height 0.3s ease, opacity 0.3s ease;
@@ -234,12 +303,16 @@ export default {
 
 .collapse-enter-to,
 .collapse-leave-from {
-  max-height: 500px; /* Adjust based on expected content size */
+  max-height: 500px;
   opacity: 1;
 }
 
 .view-all-btn {
-  margin-top: 12px;
+  margin-top: 9px;
+  background: #fff;
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
 }
 
 .view-link {
@@ -251,8 +324,8 @@ export default {
   border-radius: 8px;
   font-size: 14px;
   text-decoration: none;
-  transition: background-color 0.2s ease;
   text-align: center;
+  transition: background-color 0.2s ease;
 }
 
 .view-link:hover {
