@@ -6,14 +6,14 @@
           <tr>
             <th>Name</th>
             <th>Type</th>
-            <th>Unit</th>
+            <th>EULA</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(log, i) in category" :key="i">
             <td>{{ log.name }}</td>
             <td>{{ log.type }}</td>
-            <td>{{ log.unit }}</td>
+            <td>{{ log.eula }}</td>
           </tr>
         </tbody>
       </table>
@@ -33,29 +33,20 @@ export default {
 </script>
 
 <style scoped>
-.table-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-
-.table-title {
-  color: #fff;
-  margin: 0;
-}
-
 .table-wrapper {
-  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;       /* Enables horizontal scroll on mobile */
+  overflow-y: auto;
   max-height: 320px;
-  overflow: auto;
   border-radius: 8px;
   border: 1px solid #ddd;
 }
 
 .document-table {
-  width: 100%;
+  width: 600px; /* Minimum table width for scroll */
+  min-width: 100%;
   border-collapse: collapse;
+  table-layout: auto;
 }
 
 .document-table thead {
@@ -70,7 +61,7 @@ export default {
   padding: 10px;
   text-align: left;
   border: 1px solid #e5e5e5;
-  white-space: nowrap;
+  white-space: nowrap;      /* Prevents wrapping */
 }
 
 .document-table thead th {
@@ -78,10 +69,10 @@ export default {
   font-weight: bold;
 }
 
+/* Small screen responsiveness */
 @media (max-width: 450px) {
-  .table-actions {
-    flex-direction: column;
-    align-items: center;
+  .document-table {
+    width: max-content;     /* Keeps table structure readable */
   }
 }
 </style>

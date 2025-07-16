@@ -1,11 +1,7 @@
 {
   "summary": {
-    "assets": 2597,
-    "licenses": 50,
-    "accessories": 5,
-    "consumables": 3,
-    "components": 6,
-    "people": 59
+    "assets": 10,
+    "people": 4
   },
   "status": {
     "Ready to Deploy": 2000,
@@ -13,110 +9,143 @@
     "Archived": 500,
     "Broken - Not Fixable": 100
   },
-  "activity": [
+  "assets": [
     {
-      "date": "Mon Jun 09, 2025 1:26AM",
-      "createdBy": "Admin User",
-      "action": "checkout",
-      "item": "Bluetooth Keyboard",
-      "target": "Chance Auer"
+      "assetTag": "AT-001",
+      "assetName": "Dell Latitude 5420",
+      "modelName": "Latitude 5420",
+      "locationName": "Jakarta Office",
+      "warranty": "2 Years",
+      "purchaseDate": "2023-04-18",
+      "supplierName": "PT. Teknologi Nusantara",
+      "purchaseCost": "$1,200"
     },
     {
-      "date": "Mon Jun 09, 2025 1:24AM",
-      "createdBy": "Admin User",
-      "action": "update",
-      "item": "123"
+      "assetTag": "AT-002",
+      "assetName": "HP ProBook 450 G8",
+      "modelName": "ProBook 450 G8",
+      "locationName": "Bandung Branch",
+      "warranty": "3 Years",
+      "purchaseDate": "2022-11-30",
+      "supplierName": "CV. Mega Supplier",
+      "purchaseCost": "$1,050"
     },
     {
-      "date": "Mon Jun 09, 2025 1:23AM",
-      "createdBy": "Admin User",
-      "action": "create new",
-      "item": "123"
+      "assetTag": "AT-003",
+      "assetName": "MacBook Pro 16”",
+      "modelName": "A2485",
+      "locationName": "Bali Office",
+      "warranty": "1 Year",
+      "purchaseDate": "2024-01-10",
+      "supplierName": "Apple Authorized Reseller",
+      "purchaseCost": "$2,500"
     },
     {
-      "date": "Mon Jun 09, 2025 1:20AM",
-      "createdBy": "Admin User",
-      "action": "uploaded",
-      "item": "Acrobat"
+      "assetTag": "AT-004",
+      "assetName": "Lenovo ThinkPad X1 Carbon",
+      "modelName": "Gen 10",
+      "locationName": "Jakarta Office",
+      "warranty": "3 Years",
+      "purchaseDate": "2023-07-22",
+      "supplierName": "Lenovo Indonesia",
+      "purchaseCost": "$1,800"
     },
     {
-      "date": "Mon Jun 09, 2025 1:19AM",
-      "createdBy": "Admin User",
-      "action": "update",
-      "item": "Lenovo 480GB SATA SSD"
+      "assetTag": "AT-005",
+      "assetName": "Asus ROG Zephyrus G14",
+      "modelName": "GA402",
+      "locationName": "Yogyakarta Branch",
+      "warranty": "2 Years",
+      "purchaseDate": "2022-08-15",
+      "supplierName": "Asus Store",
+      "purchaseCost": "$1,700"
     },
     {
-      "date": "Mon Jun 09, 2025 1:18AM",
-      "createdBy": "Admin User",
-      "action": "checkout",
-      "item": "Crucial BX300 240GB SATA Internal SSD",
-      "target": "Macbook Pro 13\""
+      "assetTag": "AT-006",
+      "assetName": "Microsoft Surface Laptop 5",
+      "modelName": "1953",
+      "locationName": "Surabaya Office",
+      "warranty": "2 Years",
+      "purchaseDate": "2023-10-03",
+      "supplierName": "Microsoft Indonesia",
+      "purchaseCost": "$1,600"
     },
     {
-      "date": "Mon Jun 09, 2025 1:10AM",
-      "createdBy": "Admin User",
-      "action": "update",
-      "item": "Asus Zenbook Duo UX428EG Internal SSD"
+      "assetTag": "AT-007",
+      "assetName": "Acer Swift X 14",
+      "modelName": "SFX14-71G",
+      "locationName": "Headquarters",
+      "warranty": "2 Years",
+      "purchaseDate": "2024-02-28",
+      "supplierName": "Acer Indonesia",
+      "purchaseCost": "$1,300"
     },
     {
-      "date": "Mon Jun 09, 2025 1:00AM",
-      "createdBy": "Admin User",
-      "action": "checkout",
-      "item": "Screen Protector",
-      "target": "Macbook Air 16\""
+      "assetTag": "AT-008",
+      "assetName": "Apple iMac 24”",
+      "modelName": "M3 Chip",
+      "locationName": "Design Department",
+      "warranty": "1 Year",
+      "purchaseDate": "2024-03-14",
+      "supplierName": "Apple Store",
+      "purchaseCost": "$1,900"
     }
   ],
   "location": [
     {
-      "name": "Jakarta",
-      "item": 200,
-      "assigned": 15,
-      "user": 15
+      "name": "PT Nusantara Tech",
+      "item": "Budi Santoso",
+      "assigned": "Jl. Jend. Sudirman No. 10",
+      "user": "Jakarta",
+      "country": "Indonesia"
     },
     {
-      "name": "Surabaya",
-      "item": 100,
-      "assigned": 0,
-      "user": 0
+      "name": "CV Surya Makmur",
+      "item": "Dewi Lestari",
+      "assigned": "Jl. Pemuda No. 20",
+      "user": "Surabaya",
+      "country": "Indonesia"
     },
     {
-      "name": "Medan",
-      "item": 150,
-      "assigned": 0,
-      "user": 0
+      "name": "PT Medan Global",
+      "item": "Andi Pratama",
+      "assigned": "Jl. Gatot Subroto No. 5",
+      "user": "Medan",
+      "country": "Indonesia"
     },
     {
-      "name": "Jayapura",
-      "item": 300,
-      "assigned": 0,
-      "user": 0
+      "name": "Jayapura Logistics",
+      "item": "Sinta Maharani",
+      "assigned": "Jl. Merdeka No. 15",
+      "user": "Jayapura",
+      "country": "Indonesia"
     }
   ],
   "category": [
     {
       "name": "Laptop",
       "type": "Asset",
-      "unit": "200"
+      "eula": "Not Applicable"
     },
     {
       "name": "Keyboard",
-      "type": "Accesories",
-      "unit": "100"
+      "type": "Accessories",
+      "eula": "Not Applicable"
     },
     {
       "name": "Printer Ink",
       "type": "Consumables",
-      "unit": "500"
+      "eula": "Not Applicable"
     },
     {
       "name": "HDD / SSD",
       "type": "Component",
-      "unit": "50"
+      "eula": "OEM Only"
     },
     {
-      "name": "Microsoft 360 Lisence",
-      "type": "Lisence",
-      "unit": "10"
+      "name": "Microsoft 360 License",
+      "type": "License",
+      "eula": "Commercial Use - Annual"
     }
   ]
 }
