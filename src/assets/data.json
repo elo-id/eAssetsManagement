@@ -97,28 +97,64 @@
       "item": "Budi Santoso",
       "assigned": "Jl. Jend. Sudirman No. 10",
       "user": "Jakarta",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "coordinates": [-6.21462, 106.84513]
     },
     {
       "name": "CV Surya Makmur",
       "item": "Dewi Lestari",
       "assigned": "Jl. Pemuda No. 20",
       "user": "Surabaya",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "coordinates": [-7.24917, 112.75083]
     },
     {
       "name": "PT Medan Global",
       "item": "Andi Pratama",
       "assigned": "Jl. Gatot Subroto No. 5",
       "user": "Medan",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "coordinates": [3.59162, 98.62634]
     },
     {
       "name": "Jayapura Logistics",
       "item": "Sinta Maharani",
       "assigned": "Jl. Merdeka No. 15",
       "user": "Jayapura",
-      "country": "Indonesia"
+      "country": "Indonesia",
+      "coordinates": [-2.53371, 140.71813]
+    },
+    {
+      "name": "Sarinah Building",
+      "item": "Alpha",
+      "assigned": "Jl. M.H. Thamrin No.11",
+      "user": "Jakarta",
+      "country": "Indonesia",
+      "coordinates": [-6.193, 106.8225]
+    },
+    {
+      "name": "Plaza Indonesia",
+      "item": "Beta",
+      "assigned": "Jl. M.H. Thamrin Kav. 28–30",
+      "user": "Jakarta",
+      "country": "Indonesia",
+      "coordinates": [-6.194449, 106.82175]
+    },
+    {
+      "name": "Bundaran HI MRT Station",
+      "item": "Tetta",
+      "assigned": "Jl. M.H. Thamrin Kav. 17–136",
+      "user": "Jakarta",
+      "country": "Indonesia",
+      "coordinates": [-6.196, 106.82]
+    },
+    {
+      "name": "Thamrin City Trade Mall",
+      "item": "Gamma",
+      "assigned": "Jl. Thamrin Boulevard",
+      "user": "Jakarta",
+      "country": "Indonesia",
+      "coordinates": [-6.194203, 106.81776]
     }
   ],
   "category": [

@@ -60,6 +60,23 @@
       </div>
     </div>
 
+    <div class="middle-row-container">
+      <div
+        class="table-header"
+        :class="{ 'rounded-b-none': showMap }"
+        @click="toggleMap"
+      >
+        <h3>Assets Map</h3>
+        <span class="toggle-icon">{{ showMap ? "−" : "+" }}</span>
+      </div>
+
+      <transition name="collapse">
+        <div v-show="showMap" class="map-content">
+          <LeafletMap :locations="data.location" />
+        </div>
+      </transition>
+    </div>
+
     <div class="second-row-container">
       <div class="assets-location">
         <div
@@ -78,7 +95,10 @@
             :class="{ scrollable: showAllLocation }"
           >
             <div class="table-scroll-area">
-              <LocationTableData :location="visibleLocation" />
+              <LocationTableData
+                :location="visibleLocation"
+                @select-location="handleMapFlyTo"
+              />
             </div>
             <div class="view-all-btn">
               <a
@@ -135,6 +155,7 @@ import AssetsTableData from "@/components/tables/ListAssets.vue";
 import ChartContainer from "@/components/ChartContainer.vue";
 import LocationTableData from "@/components/tables/LocationTableData.vue";
 import CategoryTableData from "@/components/tables/CategoryTableData.vue";
+import LeafletMap from "@/components/map/LeafletMap.vue";
 
 export default {
   components: {
@@ -143,6 +164,7 @@ export default {
     ChartContainer,
     LocationTableData,
     CategoryTableData,
+    LeafletMap,
   },
   data() {
     return {
@@ -154,6 +176,8 @@ export default {
       showAllAssets: false,
       showAllLocation: false,
       showAllCategory: false,
+      showMap: true,
+      flyToCoords: null,
     };
   },
   methods: {
@@ -168,6 +192,14 @@ export default {
     },
     toggleCategoryTable() {
       this.showCategoryTable = !this.showCategoryTable;
+    },
+    toggleMap() {
+      this.showMap = !this.showMap;
+    },
+    handleMapFlyTo(coords) {
+      this.flyToCoords = coords;
+      // Optional: expand the map section if collapsed
+      if (!this.showMap) this.showMap = true;
     },
   },
   computed: {
@@ -235,6 +267,10 @@ export default {
 .assets-location,
 .assets-category {
   flex: 1;
+}
+
+.middle-row-container {
+  margin-top: 20px;
 }
 
 /* Headers */
