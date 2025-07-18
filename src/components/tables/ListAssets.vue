@@ -15,7 +15,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(log, i) in assets" :key="i">
+          <tr
+            v-for="(log, i) in assets"
+            :key="i"
+            @click="$emit('select-asset', log.coordinate)"
+            style="cursor: pointer"
+          >
             <td>{{ log.assetTag }}</td>
             <td>{{ log.assetName }}</td>
             <td>{{ log.modelName }}</td>

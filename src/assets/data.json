@@ -18,7 +18,8 @@
       "warranty": "2 Years",
       "purchaseDate": "2023-04-18",
       "supplierName": "PT. Teknologi Nusantara",
-      "purchaseCost": "$1,200"
+      "purchaseCost": "$1,200",
+      "coordinate": [-6.2, 106.816666]
     },
     {
       "assetTag": "AT-002",
@@ -28,7 +29,8 @@
       "warranty": "3 Years",
       "purchaseDate": "2022-11-30",
       "supplierName": "CV. Mega Supplier",
-      "purchaseCost": "$1,050"
+      "purchaseCost": "$1,050",
+      "coordinate": [-6.914744, 107.60981]
     },
     {
       "assetTag": "AT-003",
@@ -38,7 +40,8 @@
       "warranty": "1 Year",
       "purchaseDate": "2024-01-10",
       "supplierName": "Apple Authorized Reseller",
-      "purchaseCost": "$2,500"
+      "purchaseCost": "$2,500",
+      "coordinate": [-8.65, 115.216667]
     },
     {
       "assetTag": "AT-004",
@@ -48,7 +51,8 @@
       "warranty": "3 Years",
       "purchaseDate": "2023-07-22",
       "supplierName": "Lenovo Indonesia",
-      "purchaseCost": "$1,800"
+      "purchaseCost": "$1,800",
+      "coordinate": [-6.2, 106.816666]
     },
     {
       "assetTag": "AT-005",
@@ -58,7 +62,8 @@
       "warranty": "2 Years",
       "purchaseDate": "2022-08-15",
       "supplierName": "Asus Store",
-      "purchaseCost": "$1,700"
+      "purchaseCost": "$1,700",
+      "coordinate": [-7.79558, 110.36949]
     },
     {
       "assetTag": "AT-006",
@@ -68,7 +73,8 @@
       "warranty": "2 Years",
       "purchaseDate": "2023-10-03",
       "supplierName": "Microsoft Indonesia",
-      "purchaseCost": "$1,600"
+      "purchaseCost": "$1,600",
+      "coordinate": [-7.257472, 112.75209]
     },
     {
       "assetTag": "AT-007",
@@ -78,7 +84,8 @@
       "warranty": "2 Years",
       "purchaseDate": "2024-02-28",
       "supplierName": "Acer Indonesia",
-      "purchaseCost": "$1,300"
+      "purchaseCost": "$1,300",
+      "coordinate": [-6.208763, 106.845599]
     },
     {
       "assetTag": "AT-008",
@@ -88,7 +95,8 @@
       "warranty": "1 Year",
       "purchaseDate": "2024-03-14",
       "supplierName": "Apple Store",
-      "purchaseCost": "$1,900"
+      "purchaseCost": "$1,900",
+      "coordinate": [-6.211544, 106.845172]
     }
   ],
   "location": [

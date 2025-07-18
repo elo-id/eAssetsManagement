@@ -27,7 +27,10 @@
             :class="{ scrollable: showAllAssets }"
           >
             <div class="table-scroll-area">
-              <AssetsTableData :assets="visibleAssets" />
+              <AssetsTableData
+                :assets="visibleAssets"
+                @select-asset="handleAssetFlyTo"
+              />
             </div>
             <div class="view-all-btn">
               <a
@@ -72,7 +75,12 @@
 
       <transition name="collapse">
         <div v-show="showMap" class="map-content">
-          <LeafletMap :locations="data.location" :flyToCoords="flyToCoords" />
+          <LeafletMap
+            :locations="data.location"
+            :assets="data.assets"
+            :flyToCoords="flyToCoords"
+            :flyToAssetCoords="flyToAssetCoords"
+          />
         </div>
       </transition>
     </div>
@@ -178,6 +186,7 @@ export default {
       showAllCategory: false,
       showMap: true,
       flyToCoords: null,
+      flyToAssetCoords: null,
     };
   },
   methods: {
@@ -200,7 +209,11 @@ export default {
       this.flyToCoords = coords;
       // Optional: expand the map section if collapsed
       if (!this.showMap) this.showMap = true;
-    }, 
+    },
+    handleAssetFlyTo(coords) {
+      this.flyToAssetCoords = coords;
+      if (!this.showMap) this.showMap = true;
+    },
   },
   computed: {
     visibleAssets() {
