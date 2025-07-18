@@ -72,7 +72,7 @@
 
       <transition name="collapse">
         <div v-show="showMap" class="map-content">
-          <LeafletMap :locations="data.location" />
+          <LeafletMap :locations="data.location" :flyToCoords="flyToCoords" />
         </div>
       </transition>
     </div>
@@ -200,7 +200,7 @@ export default {
       this.flyToCoords = coords;
       // Optional: expand the map section if collapsed
       if (!this.showMap) this.showMap = true;
-    },
+    }, 
   },
   computed: {
     visibleAssets() {

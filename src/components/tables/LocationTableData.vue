@@ -12,7 +12,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(log, i) in location" :key="i">
+          <tr
+            v-for="(log, i) in location"
+            :key="i"
+            @click="$emit('select-location', log.coordinates)"
+            style="cursor: pointer;"
+          >
             <td>{{ log.name }}</td>
             <td>{{ log.item }}</td>
             <td>{{ log.assigned }}</td>
@@ -39,7 +44,7 @@ export default {
 <style scoped>
 .table-wrapper {
   width: 100%;
-  overflow-x: auto;       /* Enables horizontal scroll on mobile */
+  overflow-x: auto; /* Enables horizontal scroll on mobile */
   overflow-y: auto;
   max-height: 320px;
   border-radius: 8px;
@@ -65,7 +70,7 @@ export default {
   padding: 10px;
   text-align: left;
   border: 1px solid #e5e5e5;
-  white-space: nowrap;      /* Prevents wrapping */
+  white-space: nowrap; /* Prevents wrapping */
 }
 
 .document-table thead th {
@@ -76,7 +81,7 @@ export default {
 /* Small screen responsiveness */
 @media (max-width: 450px) {
   .document-table {
-    width: max-content;     /* Keeps table structure readable */
+    width: max-content; /* Keeps table structure readable */
   }
 }
 </style>
