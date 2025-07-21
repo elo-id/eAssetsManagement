@@ -1,43 +1,23 @@
 <template>
   <div class="dashboard">
     <div class="summary-grid">
-      <SummaryCard
-        v-for="(value, key) in data.summary"
-        :key="key"
-        :title="key"
-        :value="value"
-      />
+      <SummaryCard v-for="(value, key) in data.summary" :key="key" :title="key" :value="value" />
     </div>
 
     <div class="first-row-container">
       <div class="recent-activity">
-        <div
-          class="table-header"
-          :class="{ 'rounded-b-none': showHistoryTable }"
-          @click="toggleHistoryTable"
-        >
+        <div class="table-header" :class="{ 'rounded-b-none': showHistoryTable }" @click="toggleHistoryTable">
           <h3>List Assets</h3>
           <span class="toggle-icon">{{ showHistoryTable ? "−" : "+" }}</span>
         </div>
 
         <transition name="collapse">
-          <div
-            v-show="showHistoryTable"
-            class="table-content"
-            :class="{ scrollable: showAllAssets }"
-          >
+          <div v-show="showHistoryTable" class="table-content" :class="{ scrollable: showAllAssets }">
             <div class="table-scroll-area">
-              <AssetsTableData
-                :assets="visibleAssets"
-                @select-asset="handleAssetFlyTo"
-              />
+              <AssetsTableData :assets="visibleAssets" @select-asset="handleAssetFlyTo" />
             </div>
             <div class="view-all-btn">
-              <a
-                href="#"
-                class="view-link"
-                @click.prevent="showAllAssets = !showAllAssets"
-              >
+              <a href="#" class="view-link" @click.prevent="showAllAssets = !showAllAssets">
                 {{ showAllAssets ? "show less ↑" : "view all →" }}
               </a>
             </div>
@@ -46,11 +26,7 @@
       </div>
 
       <div class="status-chart">
-        <div
-          class="status-header"
-          :class="{ 'rounded-b-none': showStatus }"
-          @click="toggleStatus"
-        >
+        <div class="status-header" :class="{ 'rounded-b-none': showStatus }" @click="toggleStatus">
           <h3>Assets by Status</h3>
           <span class="toggle-icon">{{ showStatus ? "−" : "+" }}</span>
         </div>
@@ -64,56 +40,33 @@
     </div>
 
     <div class="middle-row-container">
-      <div
-        class="table-header"
-        :class="{ 'rounded-b-none': showMap }"
-        @click="toggleMap"
-      >
+      <div class="table-header" :class="{ 'rounded-b-none': showMap }" @click="toggleMap">
         <h3>Assets Map</h3>
         <span class="toggle-icon">{{ showMap ? "−" : "+" }}</span>
       </div>
 
       <transition name="collapse">
         <div v-show="showMap" class="map-content">
-          <LeafletMap
-            :locations="data.location"
-            :assets="data.assets"
-            :flyToCoords="flyToCoords"
-            :flyToAssetCoords="flyToAssetCoords"
-          />
+          <LeafletMap :locations="data.location" :assets="data.assets" :flyToCoords="flyToCoords"
+            :flyToAssetCoords="flyToAssetCoords" />
         </div>
       </transition>
     </div>
 
     <div class="second-row-container">
       <div class="assets-location">
-        <div
-          class="table-header"
-          :class="{ 'rounded-b-none': showLocationTable }"
-          @click="toggleLocationTable"
-        >
+        <div class="table-header" :class="{ 'rounded-b-none': showLocationTable }" @click="toggleLocationTable">
           <h3>Assets Location</h3>
           <span class="toggle-icon">{{ showLocationtable ? "−" : "+" }}</span>
         </div>
 
         <transition name="collapse">
-          <div
-            v-show="showLocationTable"
-            class="table-content"
-            :class="{ scrollable: showAllLocation }"
-          >
+          <div v-show="showLocationTable" class="table-content" :class="{ scrollable: showAllLocation }">
             <div class="table-scroll-area">
-              <LocationTableData
-                :location="visibleLocation"
-                @select-location="handleMapFlyTo"
-              />
+              <LocationTableData :location="visibleLocation" @select-location="handleMapFlyTo" />
             </div>
             <div class="view-all-btn">
-              <a
-                href="#"
-                class="view-link"
-                @click.prevent="showAllLocation = !showAllLocation"
-              >
+              <a href="#" class="view-link" @click.prevent="showAllLocation = !showAllLocation">
                 {{ showAllLocation ? "show less ↑" : "view all →" }}
               </a>
             </div>
@@ -122,30 +75,18 @@
       </div>
 
       <div class="assets-category">
-        <div
-          class="table-header"
-          :class="{ 'rounded-b-none': showCategoryTable }"
-          @click="toggleCategoryTable"
-        >
+        <div class="table-header" :class="{ 'rounded-b-none': showCategoryTable }" @click="toggleCategoryTable">
           <h3>Assets Category</h3>
           <span class="toggle-icon">{{ showCategoryTable ? "−" : "+" }}</span>
         </div>
 
         <transition name="collapse">
-          <div
-            v-show="showCategoryTable"
-            class="table-content"
-            :class="{ scrollable: showAllCategory }"
-          >
+          <div v-show="showCategoryTable" class="table-content" :class="{ scrollable: showAllCategory }">
             <div class="table-scroll-area">
               <CategoryTableData :category="visibleCategory" />
             </div>
             <div class="view-all-btn">
-              <a
-                href="#"
-                class="view-link"
-                @click.prevent="showAllCategory = !showAllCategory"
-              >
+              <a href="#" class="view-link" @click.prevent="showAllCategory = !showAllCategory">
                 {{ showAllCategory ? "show less ↑" : "view all →" }}
               </a>
             </div>
@@ -157,13 +98,14 @@
 </template>
 
 <script>
-import data from "../assets/data.json";
+// import data from "../assets/data.json";
 import SummaryCard from "@/components/SummaryCard.vue";
 import AssetsTableData from "@/components/tables/ListAssets.vue";
 import ChartContainer from "@/components/ChartContainer.vue";
 import LocationTableData from "@/components/tables/LocationTableData.vue";
 import CategoryTableData from "@/components/tables/CategoryTableData.vue";
 import LeafletMap from "@/components/map/LeafletMap.vue";
+import { mapAssetsData } from "@/data/apiService";
 
 export default {
   components: {
@@ -176,7 +118,12 @@ export default {
   },
   data() {
     return {
-      data,
+      data: {
+        summary: {},
+        assets: [],
+        location: [],
+        category: [],
+      },
       showHistoryTable: true,
       showStatus: true,
       showLocationTable: true,
@@ -190,6 +137,10 @@ export default {
     };
   },
   methods: {
+    async fetchData() {
+      this.data = await mapAssetsData();
+      console.log("Fetched data:", this.data);
+    },
     toggleHistoryTable() {
       this.showHistoryTable = !this.showHistoryTable;
     },
@@ -214,6 +165,9 @@ export default {
       this.flyToAssetCoords = coords;
       if (!this.showMap) this.showMap = true;
     },
+  },
+  mounted() {
+    this.fetchData();
   },
   computed: {
     visibleAssets() {
@@ -258,12 +212,13 @@ export default {
 
 /* Allow items to stack vertically on smaller screens */
 @media (max-width: 768px) {
-  .first-row-container > *,
-  .second-row-container > * {
+
+  .first-row-container>*,
+  .second-row-container>* {
     flex: 1 1 100%;
   }
 
-  .summary-grid > * {
+  .summary-grid>* {
     flex: 1 1 100%;
   }
 }
@@ -322,7 +277,8 @@ export default {
 }
 
 .table-content.scrollable {
-  max-height: 300px; /* Adjust based on desired visible height */
+  max-height: 300px;
+  /* Adjust based on desired visible height */
   overflow-y: auto;
 }
 
