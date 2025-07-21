@@ -1,0 +1,20 @@
+
+const TestHelpers = require('@elo/elo-cli'); // load global config from elo-cli
+// EVLIB80 - Möglichkeit für ein Projekt verschiedene Archive zu konfigurieren
+
+TestHelpers.init(require('./.elo-current-repository'));
+
+let config = {
+    publicPath: "./",
+    devServer: {
+    disableHostCheck: true,
+    proxy: {}
+    }
+};
+config.devServer.proxy[TestHelpers.getIxContext()] = {
+    target: TestHelpers.getIxServer(),
+    secure: false,
+    logLevel: "debug"
+};
+module.exports = config;
+                                    

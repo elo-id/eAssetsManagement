@@ -1,0 +1,22 @@
+{
+    "name": "eassetmanagement",
+    "version": "0.1.0",
+    "licenseMap": {},
+    "status": 101,
+    "indexHtml": "index.html",
+    "sordTypeIcons": false,
+    "archiveIcons": false,
+    "src": "src/",
+    "dist": "dist/",
+    "indexHtmlPath": "public/",
+    "namespace": "asset.management",
+    "id": "exampleId",
+    "defaultLanguage": "en",
+    "build": 24,
+    "useEloSession": true,
+    "devRedirect": "http://localhost:4200/",
+    "devLogin": false,
+    "supportedLocales": [
+        "en"
+    ]
+}
